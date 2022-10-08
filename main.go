@@ -1,6 +1,9 @@
 package main
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"os"
+)
 
 type Account struct {
 	Number  int
@@ -14,4 +17,9 @@ func main() {
 		println(err)
 	}
 	println(string(res))
+
+	err = json.NewEncoder(os.Stdout).Encode(account)
+	if err != nil {
+		println(err)
+	}
 }
