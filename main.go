@@ -6,8 +6,8 @@ import (
 )
 
 type Account struct {
-	Number  int
-	Balance int
+	Number  int `json:"n"`
+	Balance int `json:"b"`
 }
 
 func main() {
@@ -22,4 +22,13 @@ func main() {
 	if err != nil {
 		println(err)
 	}
+
+	jsonPure := []byte(`{"n":2, "b":200}`)
+	var accountX Account
+	err = json.Unmarshal(jsonPure, &accountX)
+	if err != nil {
+		println(err)
+	}
+	println(accountX.Balance)
+
 }
